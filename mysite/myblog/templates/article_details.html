@@ -1,6 +1,8 @@
 {%extends 'base.html'%} {%block content%}
 <h1>{{ post.title }}</h1>
-<small> By: {{ post.author.first_name }} {{ post.author.last_name }} </small
+<small>
+  By: {{ post.author.first_name }} {{ post.author.last_name }}
+  <a href="{% url 'update_post' post.pk %}">Edit</a> </small
 ><br />
 <hr />
 <br />
@@ -9,5 +11,11 @@
 <br />
 <a href="{% url 'home' %}" class="btn" style="background-color: #e3f2fd"
   >Back</a
+>
+<a
+  href="{% url 'update_post' post.pk %}"
+  class="btn"
+  style="background-color: #e3f2fd"
+  >Edit</a
 >
 {%endblock%}
