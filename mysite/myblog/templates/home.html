@@ -1,13 +1,17 @@
 {%extends 'base.html'%} {%block content%}
 
 <h1>Welcome to my blog!</h1>
+<br />
+<h2>Posts</h2>
+<br />
 <div class="form-group"></div>
   {%for post in object_list%}
-    <li>
-      <a href="{% url 'article-detail' post.pk %} ">{{ post.title }}</a>
-    </li>
-      {{ post.author.first_name }} - {{ post.author.last_name }} {{ post.body }}
-      <a href="{% url 'update_post' post.pk %}">Edit</a>
+      <a href="{% url 'article-detail' post.pk %}"> <br /> {{ post.title }}</a> - {{post.post_date }} <br />
+       {{ post.author.first_name }} {{ post.author.last_name }} <br />
+       {{ post.body }} <br/>
+      <small><a href="{% url 'update_post' post.pk %}">Edit - </a> </small>
+      <small><a href="{% url 'delete_post' post.pk %}">Delete</a></small>
+      <hr />
       {%endfor%}
 </div>
 
