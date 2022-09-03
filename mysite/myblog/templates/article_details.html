@@ -6,12 +6,13 @@
 ><br />
 <hr />
 <br />
-{{ post.body }}
+{{ post.body | safe }}
 <br />
 <br />
 <a href="{% url 'home' %}" class="btn" style="background-color: #e3f2fd"
   >Back</a
 >
+{% if user.is_authenticated %}
 <a
   href="{% url 'update_post' post.pk %}"
   class="btn"
@@ -25,4 +26,4 @@
   style="background-color: #e3f2fd"
   >Delete</a
 >
-{%endblock%}
+{% endif %} {%endblock%}

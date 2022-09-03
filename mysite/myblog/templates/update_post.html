@@ -1,5 +1,4 @@
-{%extends 'base.html'%} {%block content%}
-
+{%extends 'base.html'%} {%block content%} {% if user.is_authenticated %}
 <h1>Edit post</h1>
 <div class="form-group">
   <form method="POST">
@@ -9,4 +8,8 @@
   </form>
 </div>
 
-{%endblock%}
+{% else %}
+
+<h3>Please login first.</h3>
+
+{% endif %} {%endblock%}

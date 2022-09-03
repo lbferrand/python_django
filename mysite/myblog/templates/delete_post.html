@@ -1,5 +1,4 @@
-{%extends 'base.html'%} {%block content%}
-
+{%extends 'base.html'%} {%block content%} {% if user.is_authenticated %}
 <h1>Delete post</h1>
 <br />
 <h3>Delete: {{ post.title }}</h3>
@@ -15,4 +14,8 @@
   </form>
 </div>
 
-{%endblock%}
+{% else %}
+
+<h3>Please login first.</h3>
+
+{% endif %} {%endblock%}
