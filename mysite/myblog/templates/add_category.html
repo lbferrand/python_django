@@ -1,0 +1,12 @@
+{%extends 'base.html'%} {%block content%} {% if user.is_authenticated %}
+<h1>Add Category</h1>
+<div class="form-group">
+  <form method="POST">
+    <br />
+    {% csrf_token %} {{ form.as_p }}
+    <button style="background-color: #e3f2fd">Add Category</button>
+  </form>
+</div>
+{% else %}
+<h3>Please login first.</h3>
+{% endif %} {%endblock%}
