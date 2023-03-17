@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <!-- Category Menu Code -->
-            {% if cat_menu %}
+            {% if cats_menu %}
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -41,8 +41,8 @@
                   Categories
                 </a>
                 <ul class="dropdown-menu">
-                  {% for item in cat_menu %} 
-                  <li><a class="dropdown-item" href="{% url 'category' item|slugify %}"></li>{{ item }}</a>
+                  {% for post in cats_menu %} 
+                  <li><a class="dropdown-item" href="{% url 'category' post|slugify %}"></li>{{ post }</a>
                   <br />
                   {%endfor%}
                 </ul>
@@ -52,26 +52,25 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'category-list' %}">Categories</a>
               </li>
-            {% endif %}
-            {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'add_category' %}"
-                  >Add Category</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              </li>
+            {% endif %} {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add_category' %}"
+                >Add Category</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+            </li>
             {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'register' %}">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'register' %}">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
             {% endif %}
           </ul>
           <span class="navbar-text"> </span>

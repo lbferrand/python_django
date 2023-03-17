@@ -20,7 +20,6 @@ class HomeView(ListView):
     context["cat_menu"] = cat_menu
     return context
 
-
 class ArticleDetailView(DetailView):
   model = Post
   template_name = "article_details.html"
@@ -46,9 +45,8 @@ def CategoryListView(request):
   return render(request, 'category_list.html', {'cat_menu_list':cat_menu_list})
 
 def CategoryView(request, cats):
-  category_posts = Post.objects.filter(category=cats)
-  return render(request, 'categories.html', {'cats':cats, 'category_posts':category_posts})
-
+  category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+  return render(request, 'categories.html', {'cats':cats.title().replace('-', ' '), 'category_posts':category_posts})
 
 class UpdatePostView(UpdateView):
   model = Post
